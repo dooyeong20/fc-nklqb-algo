@@ -25,13 +25,12 @@ class LinkedQueue:
             return None
 
         val = self.head.value
-        self.head = self.head.next
 
-        if not self.head:
-            self.tail = None
-            return val
-
-        self.head.prev = None
+        if self.head.next:
+            self.head = self.head.next
+            self.head.prev = None
+        else:
+            self.head = None
 
         return val
 
