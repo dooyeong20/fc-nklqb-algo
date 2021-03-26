@@ -99,19 +99,19 @@ li = [i for i in range(1, 10)]
 bt = BinaryTree(li)
 
 print('pre ', end=' ')
-bt.preorder()
+bt.preorder()           # pre  1 2 4 8 9 5 3 6 7
 print()
 
 print('in ', end=' ')
-bt.inorder()
+bt.inorder()            # in  8 4 9 2 5 1 6 3 7
 print()
 
 print('post ', end=' ')
-bt.postorder()
+bt.postorder()          # post  8 9 4 5 2 6 7 3 1
 print()
 
 print('bfs ', end=' ')
-print(bt.bfs(5))
+print(bt.bfs(5))        # bfs  True
 
 print('dfs ', end=' ')
-print(bt.dfs(1))
+print(bt.dfs(1))        # dfs  True
