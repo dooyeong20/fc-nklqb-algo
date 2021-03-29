@@ -140,6 +140,10 @@ class BinarySearchTree:
 
         # Case 1 - 자식노드가 없을 때
         if not del_node.left and not del_node.right:
+            if not del_node_parent:
+                self.root = None
+                return
+
             if del_node.value > del_node_parent.value:  # 오른쪽 자식을 삭제하는 경우
                 del_node_parent.right = None
             else:
@@ -186,13 +190,14 @@ class BinarySearchTree:
 
 bst = BinarySearchTree()
 
-for i in [15, 3, 2, 8, 9, 14, 5, 1, 5, 21, 23, 17, 19]:
-    bst.insert(i)
-
+# for i in [15, 3, 2, 8, 9, 14, 5, 1, 5, 21, 23, 17, 19]:
+#     bst.insert(i)
+bst.insert(10)
 bst.root.display()
-bst.remove(15)
-bst.remove(3)
-bst.remove(5)
+bst.remove(10)
+# bst.remove(15)
+# bst.remove(3)
+# bst.remove(5)
 
 print('\n---------------------\n')
 
