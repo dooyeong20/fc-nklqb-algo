@@ -5,7 +5,7 @@
 ## Screen Capture
 
 <img src="img/1.png" width="700">
-<img src="img/2.png" width="700">
+<img src="img/2.png" width="850">
 
 ## Source Code
 
