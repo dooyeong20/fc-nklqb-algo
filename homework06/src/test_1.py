@@ -1,6 +1,5 @@
 def solution(arr):
     answer = max(arr)
-    found = False
 
     while not found:
         for n in arr:

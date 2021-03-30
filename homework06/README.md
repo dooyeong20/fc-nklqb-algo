@@ -17,7 +17,6 @@
 ```python
 def solution(arr):
     answer = max(arr)
-    found = False
 
     while not found:
         for n in arr:
@@ -35,7 +34,6 @@ def solution(arr):
 
 ```python
 def solution(phone_book):
-    answer = True
     phone_set = set(phone_book)
 
     for number in phone_set:

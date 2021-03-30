@@ -1,5 +1,4 @@
 def solution(phone_book):
-    answer = True
     phone_set = set(phone_book)
 
     for number in phone_set:
