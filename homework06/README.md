@@ -29,10 +29,6 @@ def solution(arr):
         answer += 1
 
     return answer
-
-
-print(solution([2, 6, 8, 14]))
-
 ```
 
 ### Problem #2
