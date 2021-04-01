@@ -11,44 +11,44 @@ import random
 
 
 def quicksort(x):
-    def sort(left_idx, right_idx):
-        if left_idx >= right_idx or right_idx < 0:
+    def recur(start, end):
+        if start >= end:
             return
 
-        left, right = left_idx, right_idx
-        pivot = (left_idx + right_idx) // 2
-        pivot_val = x[pivot]
+        l, r, mid = start, end, (start + end) // 2
+        p = x[mid]
 
-        while 1:
-            while left_idx <= right_idx and x[left_idx] <= pivot_val:
-                left_idx += 1
+        while l <= r:
+            while l <= r and x[l] <= p:
+                l += 1
 
-            while left_idx <= right_idx and x[right_idx] >= pivot_val:
-                right_idx -= 1
+            while l <= r and x[r] >= p:
+                r -= 1
 
-            if left_idx <= right_idx:
-                x[left_idx], x[right_idx] = x[right_idx], x[left_idx]
+            if l < r:
+                x[l], x[r] = x[r], x[l]
             else:
-                if left_idx <= pivot:
-                    x[pivot], x[left_idx] = x[left_idx], x[pivot]
-                    pivot = left_idx
+                if l <= mid:
+                    x[mid], x[l] = x[l], x[mid]
+                    mid = l
                 else:
-                    x[pivot], x[right_idx] = x[right_idx], x[pivot]
-                    pivot = right_idx
+                    x[mid], x[r] = x[r], x[mid]
+                    mid = r
                 break
 
-        sort(left, pivot - 1)
-        sort(pivot + 1, right)
+        recur(start, mid-1)
+        recur(mid+1, end)
 
-    sort(0, len(x) - 1)
+    recur(0, len(x) - 1)
 
     return x
 
 
-a = [random.randint(1, 50) for _ in range(14)]
+a = [random.randint(1, 10) for _ in range(14)]
 
 print('before sort:', a)
 print('after sort:', quicksort(a))
+
 ```
 
 ## Output
