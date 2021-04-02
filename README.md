@@ -9,3 +9,6 @@ fastcampus nklqb algorithm
 - [Homework #3](homework03/)
 - [Homework #4](homework04/)
 - [Homework #5](homework05/)
+- [Homework #6](homework06/)
+- [Homework #7](homework07/)
+- [Homework #8](homework08/)
