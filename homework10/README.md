@@ -35,19 +35,15 @@ class Trie:
 
         curr.data = word
 
-    def _find_all_children(self, node, cnt, totalLength):
-
-        if totalLength in node.memo:
-            return node.memo[totalLength]
-        else:
-            return 0
-
     def _prefix_search(self, word, cnt, totalLength):
         curr = self.root
 
         for ch in word:
             if ch == '?':
-                return self._find_all_children(curr, cnt, totalLength)
+                if totalLength in curr.memo:
+                    return curr.memo[totalLength]
+                else:
+                    return 0
 
             if ch in curr.children:
                 curr = curr.children[ch]
@@ -58,24 +54,16 @@ class Trie:
         cnt = 0
         length = len(word)
 
-        if word[0] != '?' or (word[0] == '?' and word[-1] == '?'):
-            q_idx = 0
-            for i in range(length):
-                if word[i] == '?':
-                    q_idx = i
-                    break
-
-            cnt = self._prefix_search(word, length - q_idx, length)
-        else:
+        if not(word[0] != '?' or (word[0] == '?' and word[-1] == '?')):
             word = word[::-1]
+        q_idx = 0
 
-            q_idx = 0
-            for i in range(length):
-                if word[i] == '?':
-                    q_idx = i
-                    break
+        for i in range(length):
+            if word[i] == '?':
+                q_idx = i
+                break
 
-            cnt = self._prefix_search(word, length - q_idx, length)
+        cnt = self._prefix_search(word, length - q_idx, length)
 
         return cnt
 
