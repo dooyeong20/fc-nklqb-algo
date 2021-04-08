@@ -35,13 +35,16 @@ class Trie:
 
         curr.data = word
 
-    def _prefix_search(self, word, cnt, totalLength):
+
+    def search(self, word):
+        length = len(word)
+        q_idx = 0
         curr = self.root
 
         for ch in word:
             if ch == '?':
-                if totalLength in curr.memo:
-                    return curr.memo[totalLength]
+                if length in curr.memo:
+                    return curr.memo[length]
                 else:
                     return 0
 
@@ -49,23 +52,6 @@ class Trie:
                 curr = curr.children[ch]
             else:
                 return 0
-
-    def search(self, word):
-        cnt = 0
-        length = len(word)
-
-        if not(word[0] != '?' or (word[0] == '?' and word[-1] == '?')):
-            word = word[::-1]
-        q_idx = 0
-
-        for i in range(length):
-            if word[i] == '?':
-                q_idx = i
-                break
-
-        cnt = self._prefix_search(word, length - q_idx, length)
-
-        return cnt
 
 
 def solution(words, queries):
@@ -78,11 +64,10 @@ def solution(words, queries):
         trieRev.insert(w[::-1])
 
     for q in queries:
-        if q[0] != '?' or (q[0] == '?' and q[-1] == '?'):
+        if q[0] != '?':
             answer.append(trie.search(q))
         else:
-            answer.append(trieRev.search(q))
+            answer.append(trieRev.search(q[::-1]))
 
     return answer
-
 ```
